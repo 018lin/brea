@@ -671,6 +671,24 @@
     animation: blink 1s step-end infinite;
   }
 
+  /* ===== iOS视觉震动 ===== */
+  .ios-vibe-shake {
+    animation: iosVibe 0.15s ease-in-out infinite !important;
+  }
+  @keyframes iosVibe {
+    0%  { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-3px, -2px) rotate(-0.5deg); }
+    20% { transform: translate(2px, 3px) rotate(0.5deg); }
+    30% { transform: translate(-4px, -1px) rotate(-0.3deg); }
+    40% { transform: translate(3px, -3px) rotate(0.3deg); }
+    50% { transform: translate(-2px, 2px) rotate(-0.5deg); }
+    60% { transform: translate(4px, 1px) rotate(0.5deg); }
+    70% { transform: translate(-3px, -3px) rotate(-0.3deg); }
+    80% { transform: translate(1px, 2px) rotate(0.3deg); }
+    90% { transform: translate(-2px, -1px) rotate(-0.5deg); }
+    100%{ transform: translate(3px, 0) rotate(0deg); }
+  }
+
   /* ===== 响应式 ===== */
   @media (max-width: 768px) {
     .main-content { flex-direction: column; }
@@ -1080,13 +1098,26 @@ function triggerExplosion() {
   const countdownEl = document.getElementById('explosionCountdown');
   const vibeMsg = document.getElementById('explosionVibeMsg');
 
-  // 先隐藏浮动按钮
+  // 隐藏浮动按钮
   floatSickBtn.style.display = 'none';
+
+  // 关掉背景动画，释放性能
+  document.body.classList.remove('earthquake');
+  document.getElementById('sparkles').style.display = 'none';
+  // 停掉所有漂浮名字
+  document.querySelectorAll('.name-float').forEach(el => el.remove());
 
   // 显示爆炸遮罩
   overlay.classList.add('active');
   let seconds = 10;
   countdownEl.textContent = seconds;
+  countdownEl.style.display = '';
+
+  // 重置图标和标题（以防重复触发）
+  document.querySelector('.explosion-icon').textContent = '💥';
+  document.querySelector('.explosion-title').textContent = '⚠️ 警告 ⚠️';
+  document.querySelector('.explosion-subtitle').style.display = '';
+  vibeMsg.style.display = 'none';
 
   // 倒计时
   explosionInterval = setInterval(() => {
@@ -1097,43 +1128,48 @@ function triggerExplosion() {
       clearInterval(explosionInterval);
       explosionInterval = null;
 
-      // 隐藏倒计时数字，显示最终爆炸
+      // 简化爆炸画面，减少动画
       countdownEl.style.display = 'none';
-      document.querySelector('.explosion-icon').textContent = '💥💥💥';
-      document.querySelector('.explosion-title').textContent = '☠️ BOOM! 炸了! ☠️';
+      document.querySelector('.explosion-icon').textContent = '💥';
+      document.querySelector('.explosion-title').textContent = '☠️ 炸了 ☠️';
       document.querySelector('.explosion-subtitle').style.display = 'none';
 
-      // 显示震动提示文本
+      // 降低 overlay 背景闪烁频率（去掉动画，直接红色）
+      overlay.style.animation = 'none';
+      overlay.style.background = '#cc0000';
+
+      // 显示按摩提示
       vibeMsg.style.display = 'block';
 
-      // 启动手机震动（不可停止，除非关闭网页）
       startUnstoppableVibration();
     }
   }, 1000);
 }
 
 function startUnstoppableVibration() {
-  // 检查是否支持震动
-  if (!navigator.vibrate) {
-    // 桌面端模拟：疯狂弹 alert
-    const fakeVibe = setInterval(() => {
-      // 桌面端用循环弹窗模拟不可关闭的震动
-    }, 100);
-    // 弹一个无法忽略的大 alert
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const overlay = document.getElementById('explosionOverlay');
+
+  if (isIOS || !navigator.vibrate) {
+    // iOS / 桌面：视觉抖动
+    document.body.classList.add('ios-vibe-shake');
+    overlay.classList.add('ios-vibe-shake');
+    let intensity = 1;
+    vibeInterval = setInterval(() => {
+      intensity = intensity === 1 ? 2 : 1;
+      document.body.style.setProperty('--vibe-intensity', intensity);
+    }, 300); // 降低频率
     setTimeout(() => {
-      alert('📳 乖 放肚子上 我来按摩了 📳\n\n（桌面端不支持震动，请用手机打开体验真实效果）\n\n💥 你的早餐已经爆炸！💥');
-    }, 200);
+      alert('📳 乖 放肚子上 我来按摩了 📳\n\n💥 你的早餐已经爆炸！💥');
+    }, isIOS ? 500 : 200);
     return;
   }
 
-  // 移动端：持续震动，无法停止
-  function vibeLoop() {
-    // 使用最长持续时间，循环触发
-    navigator.vibrate([500, 100, 500, 100, 500, 100, 1000, 50, 200, 50, 200, 50, 1000]);
-  }
-  vibeLoop();
-  // 每隔很短时间重新触发，阻止震动停止
-  vibeInterval = setInterval(vibeLoop, 2800);
+  // Android：马达震动，简化为短促有力的模式
+  navigator.vibrate(500); // 先来一下
+  vibeInterval = setInterval(() => {
+    navigator.vibrate(400);  // 短震动，减少卡顿
+  }, 1200); // 间隔拉长到1.2秒，不持续轰炸
 }
 
 // 页面关闭/离开时清除震动（用户退出网页）
@@ -1146,13 +1182,10 @@ window.addEventListener('beforeunload', () => {
   }
 });
 
-// 页面不可见时也保持震动（防止切后台自动停）
+// 切后台时重新触发震动（防止系统自动停）
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden && vibeInterval) {
-    // 页面被隐藏时重新触发震动
-    if (navigator.vibrate) {
-      navigator.vibrate([500, 100, 500, 100, 500, 100, 1000]);
-    }
+  if (document.hidden && vibeInterval && navigator.vibrate) {
+    navigator.vibrate(400);
   }
 });
 </script>
