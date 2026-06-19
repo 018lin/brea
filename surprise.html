@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥🔥 golei早餐店 — 庄伟杰·胡培杰·詹志恒·杨灿豪·叶俊钦·高悦·许淑慧·郑楚梅 联合冠名 🔥🔥</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000000;
+    color: #fff;
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🍳</text></svg>") 16 16, auto;
+  }
+
+  /* ===== 全屏闪烁轰炸 ===== */
+  .screen-flash {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: transparent;
+    animation: screenFlash 3s ease-in-out infinite;
+  }
+  @keyframes screenFlash {
+    0%, 90%, 100% { background: transparent; }
+    91% { background: rgba(255, 255, 255, 0.8); }
+    92% { background: rgba(255, 0, 128, 0.6); }
+    93% { background: transparent; }
+    94% { background: rgba(0, 255, 255, 0.6); }
+    95% { background: transparent; }
+  }
+
+  /* ===== 顶部超闪公告条 ===== */
+  .top-bar {
+    background: linear-gradient(90deg,
+      #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff, #ff0088, #ff0000);
+    background-size: 400% 100%;
+    animation: rainbowBg 0.5s linear infinite;
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #000;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px #fff, 0 0 40px #ff0;
+    border-bottom: 4px solid #ff0;
+    position: relative;
+    z-index: 10;
+  }
+  @keyframes rainbowBg {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+  }
+  .top-bar .blink-star {
+    animation: blinkFast 0.3s step-end infinite;
+  }
+  @keyframes blinkFast {
+    50% { opacity: 0; }
+  }
+
+  /* ===== LOGO区 ===== */
+  .brand-section {
+    text-align: center;
+    padding: 15px 10px 5px;
+    background: linear-gradient(180deg, #1a0000, #000, #0a0010);
+    position: relative;
+    border-bottom: 4px solid #ff0080;
+  }
+  .brand-logo {
+    font-size: 80px;
+    font-weight: 900;
+    background: linear-gradient(180deg, #ffdd00, #ff6a00, #ff0000, #ff0066);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px #ff8800) drop-shadow(0 0 60px #ff0000) drop-shadow(0 0 100px #ff00aa);
+    animation: logoShake 0.3s ease-in-out infinite alternate;
+    letter-spacing: 10px;
+    line-height: 1.1;
+  }
+  @keyframes logoShake {
+    0% { transform: translateX(-3px) rotate(-1deg); filter: drop-shadow(0 0 30px #ff8800) drop-shadow(0 0 60px #ff0000); }
+    100% { transform: translateX(3px) rotate(1deg); filter: drop-shadow(0 0 50px #ff00) drop-shadow(0 0 100px #ff00aa) drop-shadow(0 0 150px #fff); }
+  }
+  .brand-subtitle {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ff00aa;
+    text-shadow: 0 0 15px #ff0080, 0 0 30px #ff0066, 0 0 50px #ff00ff;
+    animation: blink 0.5s step-end infinite;
+    margin-top: 5px;
+    letter-spacing: 6px;
+  }
+  @keyframes blink {
+    50% { opacity: 0.2; }
+  }
+  .brand-slogan {
+    font-size: 14px;
+    color: #ffaa00;
+    text-shadow: 0 0 10px #ff8800;
+    margin-top: 4px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== 大标题 ===== */
+  .hero {
+    text-align: center;
+    padding: 15px 10px 5px;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 900;
+    color: #ffdd00;
+    text-shadow:
+      0 0 10px #ff8800,
+      0 0 30px #ff4400,
+      0 0 60px #ff0000,
+      0 0 100px #ff0066,
+      0 0 150px #ff00aa;
+    animation: heroGlow 0.4s ease-in-out infinite alternate;
+    line-height: 1.2;
+    letter-spacing: 4px;
+  }
+  @keyframes heroGlow {
+    0% { text-shadow: 0 0 10px #ff8800, 0 0 30px #ff4400, 0 0 60px #ff0000; transform: scale(1); }
+    100% { text-shadow: 0 0 30px #ff0, 0 0 80px #ff8800, 0 0 150px #ff0000, 0 0 200px #fff; transform: scale(1.03); }
+  }
+  .hero h2 {
+    font-size: 24px;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00aa, 0 0 30px #ff00ff, 0 0 50px #f0f;
+    animation: blink 0.6s step-end infinite;
+    margin-top: 5px;
+  }
+
+  /* ===== 倒计时炸弹区 ===== */
+  .countdown-section {
+    background: linear-gradient(180deg, #200000, #400000, #200000);
+    border: 5px solid #ff0000;
+    border-radius: 20px;
+    margin: 10px 15px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 0 50px #ff0000, 0 0 100px #ff4400, inset 0 0 50px rgba(255,0,0,0.4);
+    animation: borderFlash 0.3s ease-in-out infinite alternate;
+  }
+  @keyframes borderFlash {
+    0% { border-color: #ff0000; box-shadow: 0 0 50px #ff0000, 0 0 100px #ff4400; }
+    33% { border-color: #ffff00; box-shadow: 0 0 50px #ffff00, 0 0 100px #ffaa00; }
+    66% { border-color: #ff00ff; box-shadow: 0 0 50px #ff00ff, 0 0 100px #ff00aa; }
+    100% { border-color: #00ffff; box-shadow: 0 0 50px #00ffff, 0 0 100px #00aaff; }
+  }
+  .countdown-section h3 {
+    font-size: 30px;
+    color: #ff2222;
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+    margin-bottom: 8px;
+    letter-spacing: 4px;
+  }
+  .countdown-section .timer {
+    font-size: 72px;
+    font-weight: 900;
+    color: #ffdd00;
+    text-shadow: 0 0 20px #ff8800, 0 0 50px #ff0000, 0 0 80px #ff0000;
+    letter-spacing: 12px;
+    animation: timerShake 0.5s ease-in-out infinite;
+  }
+  @keyframes timerShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+  .countdown-section .fake-notice {
+    color: #ff6666;
+    font-size: 14px;
+    margin-top: 8px;
+    animation: blink 0.7s step-end infinite;
+    font-weight: 700;
+  }
+
+  /* ===== 三栏大乱斗布局 ===== */
+  .main-content {
+    display: flex;
+    gap: 6px;
+    padding: 0 6px;
+    margin-top: 10px;
+  }
+  .left-col, .right-col {
+    width: 190px;
+    min-width: 190px;
+  }
+  .center-col {
+    flex: 1;
+  }
+
+  /* ===== 卡片样式 ===== */
+  .card {
+    background: linear-gradient(135deg, #1a0010, #0d001a);
+    border: 3px solid #ff00aa;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 6px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 0, 170, 0.5);
+    animation: cardPulse 2s ease-in-out infinite;
+  }
+  @keyframes cardPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 170, 0.5); }
+    50% { box-shadow: 0 0 40px rgba(255, 0, 170, 0.9), 0 0 60px rgba(255, 255, 0, 0.4); }
+  }
+  .card::before {
+    content: "🍳";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 30px;
+    animation: spinFoot 1s linear infinite;
+  }
+  @keyframes spinFoot {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.8); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  .card h4 {
+    font-size: 17px;
+    color: #ff6ec7;
+    text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0066;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+
+  /* ===== 假缩略图网格 ===== */
+  .thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+  .fake-thumb {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    cursor: pointer;
+    transition: transform 0.15s;
+    border: 3px solid;
+    animation: thumbGlow 0.8s ease-in-out infinite alternate;
+    position: relative;
+  }
+  .fake-thumb:hover {
+    transform: scale(1.3);
+    z-index: 10;
+    filter: brightness(1.5);
+  }
+  @keyframes thumbGlow {
+    0% { box-shadow: 0 0 8px currentColor; }
+    100% { box-shadow: 0 0 35px currentColor, 0 0 60px currentColor; }
+  }
+  .thumb-1 { background: linear-gradient(135deg, #ff0044, #ff8800); border-color: #ff0044; color: #ff0044; }
+  .thumb-2 { background: linear-gradient(135deg, #8800ff, #00ddff); border-color: #8800ff; color: #8800ff; }
+  .thumb-3 { background: linear-gradient(135deg, #00ff44, #ffdd00); border-color: #00ff44; color: #00ff44; }
+  .thumb-4 { background: linear-gradient(135deg, #ff0099, #dd00ff); border-color: #ff0099; color: #ff0099; }
+  .thumb-5 { background: linear-gradient(135deg, #ff3300, #ffbb00); border-color: #ff3300; color: #ff3300; }
+  .thumb-6 { background: linear-gradient(135deg, #0066ff, #00ffcc); border-color: #0066ff; color: #0066ff; }
+  .fake-thumb .food-overlay {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    font-size: 14px;
+  }
+
+  /* ===== 跑马灯 ===== */
+  .marquee {
+    background: #0a0a0a;
+    border-top: 4px solid #ff0080;
+    border-bottom: 4px solid #ff0080;
+    padding: 10px 0;
+    margin: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 900;
+    color: #ffdd00;
+    text-shadow: 0 0 10px #ff8800;
+  }
+  .marquee span {
+    display: inline-block;
+    animation: marquee 6s linear infinite;
+    padding-left: 100%;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  .marquee-top {
+    border-color: #ffdd00;
+    color: #ff00aa;
+    text-shadow: 0 0 10px #ff00ff;
+    font-size: 14px;
+    animation: borderFlash 0.5s ease-in-out infinite alternate;
+  }
+
+  /* ===== 超大按钮 ===== */
+  .big-btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-size: 26px;
+    font-weight: 900;
+    text-align: center;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    letter-spacing: 6px;
+    margin: 8px 0;
+    position: relative;
+    overflow: hidden;
+    animation: btnShine 0.6s ease-in-out infinite;
+    transition: none;
+  }
+  .btn-red {
+    background: linear-gradient(180deg, #ff3333, #cc0000);
+    box-shadow: 0 0 50px #ff0000, 0 0 80px #ff4400, 0 8px 0 #770000;
+    color: #ffff00;
+    text-shadow: 0 0 15px #ff0;
+  }
+  .btn-yellow {
+    background: linear-gradient(180deg, #ffee00, #ff8800);
+    box-shadow: 0 0 50px #ffaa00, 0 0 80px #ff6600, 0 8px 0 #884400;
+    color: #ff0000;
+    text-shadow: 0 0 10px #ff0000;
+  }
+  .btn-green {
+    background: linear-gradient(180deg, #33ff33, #00aa00);
+    box-shadow: 0 0 50px #00ff00, 0 0 80px #00ff44, 0 8px 0 #006600;
+    color: #ffff00;
+    text-shadow: 0 0 15px #ff0;
+  }
+  .btn-purple {
+    background: linear-gradient(180deg, #ff00ff, #8800cc);
+    box-shadow: 0 0 50px #ff00ff, 0 0 80px #ff00aa, 0 8px 0 #440066;
+    color: #ffff00;
+    text-shadow: 0 0 15px #ff0;
+    animation: btnShine 0.4s ease-in-out infinite;
+  }
+  @keyframes btnShine {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.5); }
+    100% { filter: brightness(1); }
+  }
+  .big-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    filter: brightness(2);
+    box-shadow: 0 0 80px currentColor, 0 0 150px currentColor, 0 12px 0 #000;
+  }
+  .big-btn:active {
+    transform: translateY(3px);
+  }
+
+  /* ===== 浮动弹窗1：客服 ===== */
+  .popup-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: linear-gradient(135deg, #2a0020, #1a0030);
+    border: 3px solid #ff00aa;
+    border-radius: 20px;
+    padding: 15px;
+    z-index: 999;
+    box-shadow: 0 0 40px rgba(255,0,170,0.7), 0 0 80px rgba(255,0,255,0.4);
+    animation: popupBounce 1.5s ease-in-out infinite;
+  }
+  @keyframes popupBounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-15px); }
+    60% { transform: translateY(-5px); }
+  }
+  .popup-chat .avatar {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffdd00, #ff6600);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    animation: spinFoot 3s linear infinite;
+  }
+  .popup-chat .msg {
+    display: inline;
+    font-size: 14px;
+    color: #ffdd00;
+    text-shadow: 0 0 8px #ff8800;
+    font-weight: 700;
+  }
+  .popup-chat .typing {
+    color: #ffaa00;
+    font-size: 12px;
+    margin-top: 8px;
+    animation: blink 0.5s step-end infinite;
+  }
+
+  /* ===== 浮动弹窗2 ===== */
+  .popup-notify {
+    position: fixed;
+    top: 150px;
+    left: 5px;
+    width: 260px;
+    background: linear-gradient(135deg, #150000, #2a0000);
+    border: 3px solid #ff0066;
+    border-radius: 12px;
+    padding: 12px;
+    z-index: 998;
+    box-shadow: 0 0 30px rgba(255,0,102,0.6), 0 0 60px rgba(255,0,0,0.3);
+    font-size: 13px;
+    color: #ff6666;
+    animation: popupBounce 2s ease-in-out 0.3s infinite;
+  }
+  .popup-notify .bell {
+    font-size: 30px;
+    display: inline-block;
+    animation: bellRing 0.2s ease-in-out infinite alternate;
+  }
+  @keyframes bellRing {
+    0% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+  }
+
+  /* ===== 浮动弹窗3：右下另一个 ===== */
+  .popup-vip {
+    position: fixed;
+    bottom: 250px;
+    right: 5px;
+    width: 280px;
+    background: linear-gradient(135deg, #1a1a00, #2a2a00);
+    border: 3px solid #ffdd00;
+    border-radius: 12px;
+    padding: 12px;
+    z-index: 997;
+    box-shadow: 0 0 30px rgba(255,221,0,0.6);
+    font-size: 13px;
+    color: #ffdd00;
+    animation: popupBounce 2.5s ease-in-out 1s infinite;
+  }
+
+  /* ===== HOT 标签 ===== */
+  .hot-tag {
+    display: inline-block;
+    background: #ff0000;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 3px;
+    animation: blink 0.3s step-end infinite;
+    text-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 15px #ff0000;
+  }
+
+  /* ===== NEW 标签 ===== */
+  .new-tag {
+    display: inline-block;
+    background: #00ff00;
+    color: #000;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 3px;
+    animation: blink 0.4s step-end infinite;
+    box-shadow: 0 0 15px #00ff00;
+  }
+
+  /* ===== 星星背景 ===== */
+  .sparkles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .sparkle {
+    position: absolute;
+    font-size: 20px;
+    animation: sparkleFall linear infinite;
+  }
+  @keyframes sparkleFall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== 大名滚动轰炸区 ===== */
+  .name-bomb-section {
+    text-align: center;
+    padding: 15px 5px;
+    background: #000;
+    border-top: 4px solid #ff0;
+    border-bottom: 4px solid #ff0;
+    overflow: hidden;
+    position: relative;
+  }
+  .name-bomb-row {
+    white-space: nowrap;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    animation: nameBombScroll 3s linear infinite;
+    display: inline-block;
+    padding-left: 100%;
+  }
+  @keyframes nameBombScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  .name-bomb-row .n0 { color: #ff0000; text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0; animation: blink 0.3s step-end infinite; }
+  .name-bomb-row .n1 { color: #ff8800; text-shadow: 0 0 20px #ff8800, 0 0 40px #fff; animation: blink 0.35s step-end infinite; }
+  .name-bomb-row .n2 { color: #ffff00; text-shadow: 0 0 20px #ff0, 0 0 40px #f00; animation: blink 0.25s step-end infinite; }
+  .name-bomb-row .n3 { color: #00ff00; text-shadow: 0 0 20px #0f0, 0 0 40px #ff0; animation: blink 0.4s step-end infinite; }
+  .name-bomb-row .n4 { color: #00ffff; text-shadow: 0 0 20px #0ff, 0 0 40px #0f0; animation: blink 0.28s step-end infinite; }
+  .name-bomb-row .n5 { color: #ff00ff; text-shadow: 0 0 20px #f0f, 0 0 40px #0ff; animation: blink 0.33s step-end infinite; }
+  .name-bomb-row .n6 { color: #ff0066; text-shadow: 0 0 20px #f06, 0 0 40px #ff0; animation: blink 0.22s step-end infinite; }
+  .name-bomb-row .n7 { color: #ff6600; text-shadow: 0 0 20px #f60, 0 0 40px #ff0; animation: blink 0.38s step-end infinite; }
+
+  /* ===== 名字漂浮标签 ===== */
+  .name-float {
+    position: fixed;
+    font-size: 22px;
+    font-weight: 900;
+    pointer-events: none;
+    z-index: 996;
+    animation: nameFloatAcross 6s linear infinite;
+    white-space: nowrap;
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+  @keyframes nameFloatAcross {
+    0% { transform: translateX(-200px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(calc(100vw + 200px)); opacity: 0; }
+  }
+
+  /* ===== 页面抖动 ===== */
+  .earthquake {
+    animation: earthquake 8s ease-in-out infinite;
+  }
+  @keyframes earthquake {
+    0%, 90%, 100% { transform: translate(0, 0); }
+    91% { transform: translate(-4px, 2px); }
+    92% { transform: translate(3px, -3px); }
+    93% { transform: translate(-2px, -1px); }
+    94% { transform: translate(5px, 3px); }
+    95% { transform: translate(-3px, -2px); }
+    96% { transform: translate(1px, 1px); }
+    97% { transform: translate(0, 0); }
+  }
+
+  /* ===== 悬浮"肚子痛"按钮 ===== */
+  .float-sick-btn {
+    position: fixed;
+    z-index: 1000;
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    color: #ffff00;
+    border: 3px solid #ff0000;
+    border-radius: 30px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 0 30px #ff0000, 0 0 60px #ff4400;
+    animation: sickBtnPulse 0.5s ease-in-out infinite alternate;
+    white-space: nowrap;
+    letter-spacing: 2px;
+    transition: top 1.5s ease-in-out, left 1.5s ease-in-out;
+    text-shadow: 0 0 10px #ff0;
+  }
+  .float-sick-btn:hover {
+    transform: scale(1.15);
+    filter: brightness(1.8);
+    box-shadow: 0 0 50px #ff0000, 0 0 100px #ff4400;
+  }
+  @keyframes sickBtnPulse {
+    0% { box-shadow: 0 0 20px #ff0000, 0 0 40px #ff4400; }
+    100% { box-shadow: 0 0 50px #ff0000, 0 0 90px #ff8800, 0 0 120px #ffff00; }
+  }
+
+  /* ===== 爆炸警告全屏遮罩 ===== */
+  .explosion-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(139, 0, 0, 0.95);
+    z-index: 10001;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: explosionBgFlash 0.3s ease-in-out infinite;
+  }
+  .explosion-overlay.active {
+    display: flex;
+  }
+  @keyframes explosionBgFlash {
+    0%, 100% { background: rgba(139, 0, 0, 0.95); }
+    50% { background: rgba(255, 0, 0, 0.95); }
+  }
+  .explosion-modal {
+    text-align: center;
+    animation: explosionShake 0.15s ease-in-out infinite;
+  }
+  @keyframes explosionShake {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-8px, 4px); }
+    50% { transform: translate(6px, -6px); }
+    75% { transform: translate(-4px, -2px); }
+  }
+  .explosion-icon {
+    font-size: 120px;
+    animation: explosionIconPulse 0.2s ease-in-out infinite alternate;
+  }
+  @keyframes explosionIconPulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.3); filter: brightness(2); }
+  }
+  .explosion-title {
+    font-size: 52px;
+    font-weight: 900;
+    color: #ffff00;
+    text-shadow: 0 0 30px #ff0000, 0 0 60px #ff4400, 0 0 100px #ff0000;
+    letter-spacing: 8px;
+    margin: 20px 0;
+    animation: blink 0.3s step-end infinite;
+  }
+  .explosion-countdown {
+    font-size: 150px;
+    font-weight: 900;
+    color: #ff0000;
+    text-shadow: 0 0 40px #ffff00, 0 0 80px #ff8800, 0 0 150px #ff0000;
+    letter-spacing: 20px;
+    font-family: 'Courier New', monospace;
+    animation: explosionCountPulse 0.5s ease-in-out infinite alternate;
+  }
+  @keyframes explosionCountPulse {
+    0% { transform: scale(1); color: #ff0000; }
+    50% { transform: scale(1.1); color: #ffff00; }
+    100% { transform: scale(1.05); color: #ff0000; }
+  }
+  .explosion-subtitle {
+    font-size: 24px;
+    color: #ff8800;
+    text-shadow: 0 0 20px #ff0000;
+    margin-top: 15px;
+    animation: blink 0.5s step-end infinite;
+  }
+  .explosion-warning-msg {
+    font-size: 18px;
+    color: #ff4444;
+    margin-top: 30px;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 768px) {
+    .main-content { flex-direction: column; }
+    .left-col, .right-col { width: 100%; min-width: 100%; display: flex; flex-wrap: wrap; gap: 6px; }
+    .left-col .card, .right-col .card { min-width: 140px; flex: 1; }
+    .brand-logo { font-size: 42px; letter-spacing: 4px; }
+    .hero h1 { font-size: 28px; }
+    .countdown-section .timer { font-size: 40px; letter-spacing: 4px; }
+  }
+</style>
+</head>
+<body class="earthquake">
+
+<!-- 全屏闪白 -->
+<div class="screen-flash"></div>
+
+<!-- 星星背景 -->
+<div class="sparkles" id="sparkles"></div>
+
+<!-- 顶部彩虹条 -->
+<div class="top-bar">
+  <span class="blink-star">🌟</span>
+  golei早餐店 · 全球早餐行业领导者 · 纳斯达克即将上市
+  <span class="blink-star">🌟</span>
+</div>
+
+<!-- 品牌LOGO区 -->
+<div class="brand-section">
+  <div class="brand-logo">golei早餐店</div>
+  <div class="brand-subtitle">GOLEI BREAKFAST</div>
+  <div class="brand-slogan">🏆 国际早餐协会认证 · ISO 9001 早餐标准制定者 · 全球连锁 8848 家 🏆</div>
+</div>
+
+<!-- 大名轰炸区 -->
+<div class="name-bomb-section">
+  <div class="name-bomb-row" style="animation-duration:2.5s;">
+    <span class="n0">🔥庄伟杰🔥</span>
+    <span class="n1">🍳胡培杰🍳</span>
+    <span class="n2">🥟詹志恒🥟</span>
+    <span class="n3">💎杨灿豪💎</span>
+    <span class="n4">🌟叶俊钦🌟</span>
+    <span class="n5">🔥高悦🔥</span>
+    <span class="n6">🍜许淑慧🍜</span>
+    <span class="n7">💎郑楚梅💎</span>
+  </div>
+  <div class="name-bomb-row" style="animation-duration:2.5s; animation-delay: -1.25s;">
+    <span class="n0">🔥庄伟杰🔥</span>
+    <span class="n1">🍳胡培杰🍳</span>
+    <span class="n2">🥟詹志恒🥟</span>
+    <span class="n3">💎杨灿豪💎</span>
+    <span class="n4">🌟叶俊钦🌟</span>
+    <span class="n5">🔥高悦🔥</span>
+    <span class="n6">🍜许淑慧🍜</span>
+    <span class="n7">💎郑楚梅💎</span>
+  </div>
+</div>
+
+<!-- 主标题 -->
+<div class="hero">
+  <h1>🍳 早餐就选golei 🍳</h1>
+  <h2>🔥🔥 以上八位尊贵VIP 终身免费吃早餐 🔥🔥</h2>
+</div>
+
+<!-- 跑马灯1 -->
+<div class="marquee marquee-top">
+  <span>
+    🍳 庄伟杰 刚刚在golei早餐店充值 88888 元！&nbsp;&nbsp;&nbsp;
+    🥟 胡培杰 携全家老小排队 3 小时只为吃一顿早餐！&nbsp;&nbsp;&nbsp;
+    🍜 詹志恒 吃完后当场哭了："这辈子白活了！"&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- 倒计时 -->
+<div class="countdown-section">
+  <h3>⏰ golei早餐店 · 开业大酬宾 · 倒计时 ⏰</h3>
+  <div class="timer" id="timer">23:59:59</div>
+  <div class="fake-notice">⚠️ 已有 98,427 人抢购！今日仅剩 <span style="font-size:22px;color:#ffff00;">3</span> 个早餐位！⚠️</div>
+</div>
+
+<!-- 跑马灯2 -->
+<div class="marquee">
+  <span>
+    🍳 庄伟杰·胡培杰·詹志恒·杨灿豪·叶俊钦·高悦·许淑慧·郑楚梅 — golei早餐店终身荣誉会员 🍳
+  </span>
+</div>
+
+<!-- 三栏布局 -->
+<div class="main-content">
+
+  <!-- 左栏 -->
+  <div class="left-col">
+    <div class="card">
+      <h4>🔥 热销早餐套餐</h4>
+      <div style="text-align:center;font-size:45px;">🍳<br><span class="hot-tag">爆款 HOT</span></div>
+      <div style="font-size:12px;color:#ff6ec7;text-align:center;margin-top:6px;">已售: 9999万+ 份</div>
+    </div>
+    <div class="card">
+      <h4>🎯 智能推荐</h4>
+      <div style="text-align:center;font-size:45px;">🥟</div>
+      <div style="font-size:11px;color:#ff6ec7;text-align:center;">AI 根据你的口味精准匹配</div>
+      <div style="font-size:10px;color:#888;text-align:center;">已扫描你的浏览器指纹</div>
+    </div>
+    <div class="card">
+      <h4>💎 黑金VIP</h4>
+      <div style="text-align:center;font-size:45px;">👑</div>
+      <button class="big-btn btn-yellow" style="font-size:14px;padding:10px;letter-spacing:2px;" onclick="alert('🎉 恭喜！\n\n你已成为golei早餐店终身黑金VIP！\n\n权益包括：\n🍳 无限次意念早餐\n🥟 空气煎饼果子\n💨 量子豆浆体验\n\n会员号：GL-000-000-001\n\n请截图保存！')">¥ 0 元开通</button>
+    </div>
+  </div>
+
+  <!-- 中间栏 -->
+  <div class="center-col">
+    <div class="card">
+      <h4>🍳 早餐美食展示 · 点击体验 🍳</h4>
+      <div class="thumb-grid">
+        <div class="fake-thumb thumb-1" onclick="showPrank('🍳 经典豆浆油条：现磨豆浆配现炸油条，酥脆可口！（虚拟版）')">🍳<span class="food-overlay">💧</span></div>
+        <div class="fake-thumb thumb-2" onclick="showPrank('🍳 煎饼果子：加入 108 味名贵香料，实际是一包辣条')">🥟<span class="food-overlay">🌿</span></div>
+        <div class="fake-thumb thumb-3" onclick="showPrank('🍳 牛奶燕麦：进口新西兰牛奶，喝完皮肤滑得像泥鳅')">🥛<span class="food-overlay">🥛</span></div>
+        <div class="fake-thumb thumb-4" onclick="showPrank('🍳 钻石肠粉：用南非真钻做配料，贵就完事了')">💎<span class="food-overlay">💎</span></div>
+        <div class="fake-thumb thumb-5" onclick="showPrank('🍳 火焰煎包：高温煎制，附带烤肉味香气')">🔥<span class="food-overlay">🔥</span></div>
+        <div class="fake-thumb thumb-6" onclick="showPrank('🍳 量子早餐：利用量子纠缠，不吃也能饱，薛定谔的胃')">⚛️<span class="food-overlay">⚛️</span></div>
+      </div>
+    </div>
+
+    <button class="big-btn btn-red" onclick="bigSurprise()">
+      🎁 点击免费领早餐券 🎁
+    </button>
+    <div style="text-align:center;color:#ff0000;font-size:13px;font-weight:900;animation:blink 0.5s step-end infinite;">
+      ⚠️ 最后 3 张！送完即止！⚠️
+    </div>
+
+    <button class="big-btn btn-purple" onclick="vipRoom()">
+      🍳 尊享 VIP 包间 · 立即预约 🍳
+    </button>
+
+    <div class="card">
+      <h4>📢 golei早餐VIP好评 📢</h4>
+      <div style="font-size:12px;color:#ffcc00;line-height:2;">
+        ⭐⭐⭐⭐⭐ "我是庄伟杰，自从吃了golei的早餐，走路都带风！"<br>
+        <span style="color:#888;font-size:10px;">—— 庄伟杰 · 荣誉顾客</span><br>
+        ⭐⭐⭐⭐⭐ "胡培杰推荐我来，吃了一顿，从此爱上早餐"<br>
+        <span style="color:#888;font-size:10px;">—— 杨灿豪 · 回头客</span><br>
+        ⭐⭐⭐⭐⭐ "詹志恒带我来吃早餐，我说不来，现在真香了！"<br>
+        <span style="color:#888;font-size:10px;">—— 叶俊钦 · 新晋VIP</span><br>
+        ⭐⭐⭐⭐⭐ "高悦和许淑慧吃完之后，当场办了年卡！"<br>
+        <span style="color:#888;font-size:10px;">—— 郑楚梅 · 见证者</span><br>
+        ⭐⭐⭐⭐⭐ "庄伟杰说不是地球人也要吃，我只好来了"<br>
+        <span style="color:#888;font-size:10px;">—— 胡培杰 · 被迫营业</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右栏 -->
+  <div class="right-col">
+    <div class="card">
+      <h4>🏅 golei早餐风云榜</h4>
+      <div style="font-size:12px;color:#ffcc00;line-height:2;">
+        🥇 庄伟杰 — 累计吃 99999 次<br>
+        🥈 胡培杰 — 累计吃 88888 次<br>
+        🥉 詹志恒 — 累计吃 77777 次<br>
+        4. 杨灿豪 — 累计吃 66666 次<br>
+        5. 叶俊钦 — 累计吃 55555 次<br>
+        6. 高悦 — 累计吃 44444 次<br>
+        7. 许淑慧 — 累计吃 33333 次<br>
+        8. 郑楚梅 — 累计吃 22222 次<br>
+      </div>
+    </div>
+    <div class="card">
+      <h4>💬 实时弹幕</h4>
+      <div style="font-size:12px;color:#00ffcc;line-height:2;height:130px;overflow:hidden;">
+        <div id="danmaku">
+          > 庄伟杰：我为golei代言！<br>
+          > 胡培杰：早餐我只认golei<br>
+          > 詹志恒：已推荐给全公司<br>
+          > 杨灿豪：早餐界的爱马仕<br>
+          > 叶俊钦：不吃不知道<br>
+          > 高悦：我妈问我为什么跪着吃<br>
+          > 许淑慧：已充值 10 年会员<br>
+          > 郑楚梅：带全家来吃<br>
+          > 庄伟杰：无敌是多么寂寞<br>
+        </div>
+      </div>
+    </div>
+    <button class="big-btn btn-green" style="font-size:16px;padding:12px;letter-spacing:2px;" onclick="alert('📢 请转发到 10 个群！\n\n让更多人知道golei早餐店！\n\n（别真发，开个玩笑 🤣）\n\n————————————————\ngolei早餐店 · 早餐改变世界')">
+      📤 推荐给好友 📤
+    </button>
+  </div>
+
+</div>
+
+<!-- 底部超大按钮 -->
+<div style="text-align:center;padding:20px;">
+  <button class="big-btn btn-yellow" onclick="ultimateReward()" style="width:auto;display:inline-block;padding:18px 50px;font-size:22px;">
+    🌟 golei早餐店 · 终极至尊大奖 🌟
+  </button>
+</div>
+
+<!-- 底部版权 -->
+<div style="text-align:center;padding:15px;color:#ff00aa;font-size:11px;text-shadow:0 0 5px #ff00aa;animation:blink 1.5s step-end infinite;border-top:2px solid #ff00aa;margin-top:10px;">
+  © 2026 golei早餐店国际集团股份有限公司 · 早餐码 粤B-8848 · 早餐改变世界 · 不吃不是地球人
+</div>
+
+<!-- 浮动弹窗1：假客服 -->
+<div class="popup-chat" id="popupChat">
+  <span class="avatar">🍳</span>
+  <span class="msg">亲～golei早餐店了解一下？今日特价！</span>
+  <div class="typing">客服正在输入...</div>
+  <button onclick="closePopup('popupChat')" style="position:absolute;top:5px;right:10px;background:none;border:none;color:#888;cursor:pointer;font-size:18px;">✕</button>
+</div>
+
+<!-- 浮动弹窗2：假通知 -->
+<div class="popup-notify" id="popupNotify">
+  <span class="bell">🔔</span>
+  <strong>golei早餐店提醒您</strong><br>
+  您还有一张免费早餐券未领取！<br>
+  点击立即领取 >>
+  <button onclick="closePopup('popupNotify')" style="position:absolute;top:5px;right:10px;background:none;border:none;color:#888;cursor:pointer;font-size:14px;">✕</button>
+</div>
+
+<!-- 浮动弹窗3 -->
+<div class="popup-vip" id="popupVip">
+  <span style="font-size:24px;">👑</span>
+  <strong style="color:#ffdd00;">VIP 专属通道</strong><br>
+  <span style="color:#ffaa00;font-size:12px;">尊贵的 VIP 会员，您的专属厨师已就位</span><br>
+  <span style="color:#ff6600;font-size:10px;animation:blink 0.8s step-end infinite;">🍳 点击预约 🍳</span>
+  <button onclick="closePopup('popupVip')" style="position:absolute;top:5px;right:10px;background:none;border:none;color:#888;cursor:pointer;font-size:14px;">✕</button>
+</div>
+
+<!-- 悬浮按钮：吃了早餐肚子痛 -->
+<button class="float-sick-btn" id="floatSickBtn" onclick="triggerExplosion()">
+  🤢 吃了早餐肚子痛怎么办？
+</button>
+
+<!-- 爆炸警告全屏遮罩 -->
+<div class="explosion-overlay" id="explosionOverlay">
+  <div class="explosion-modal">
+    <div class="explosion-icon">💥</div>
+    <div class="explosion-title">⚠️ 警告 ⚠️</div>
+    <div class="explosion-countdown" id="explosionCountdown">10</div>
+    <div class="explosion-subtitle">💀 即将爆炸 💀</div>
+    <div class="explosion-warning-msg" id="explosionVibeMsg" style="display:none;">
+      乖 放肚子上 我来按摩了
+    </div>
+  </div>
+</div>
+
+<script>
+// 页面加载先弹窗轰炸
+setTimeout(() => {
+  alert('🍳 golei早餐店欢迎您！🍳\n\n庄伟杰、胡培杰、詹志恒、杨灿豪、\n叶俊钦、高悦、许淑慧、郑楚梅\n八大天王联合推荐！\n\n点击确定领取免费早餐券！');
+}, 800);
+
+setTimeout(() => {
+  alert('⚠️ 庄伟杰提醒您：有 3 张早餐券即将过期！\n\n胡培杰也说：请立即使用！');
+}, 2500);
+
+// 倒计时永远重置
+function updateTimer() {
+  const now = new Date();
+  const h = String(23 - (now.getHours() % 24)).padStart(2, '0');
+  const m = String(59 - now.getMinutes()).padStart(2, '0');
+  const s = String(59 - now.getSeconds()).padStart(2, '0');
+  document.getElementById('timer').textContent = h + ':' + m + ':' + s;
+}
+setInterval(updateTimer, 1000);
+updateTimer();
+
+// 生成星星背景
+const sparklesContainer = document.getElementById('sparkles');
+const emojis = ['🍳', '🥟', '✨', '🌟', '💫', '⭐', '🔥', '💖', '💎', '👑', '🎉', '💰'];
+for (let i = 0; i < 40; i++) {
+  const el = document.createElement('span');
+  el.className = 'sparkle';
+  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  el.style.left = Math.random() * 100 + '%';
+  el.style.animationDuration = (2 + Math.random() * 6) + 's';
+  el.style.animationDelay = Math.random() * 6 + 's';
+  sparklesContainer.appendChild(el);
+}
+
+// 关闭弹窗
+function closePopup(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// 假缩略图点击
+function showPrank(msg) {
+  alert('🍳 golei早餐店 · 体验报告 🍳\n\n' + msg + '\n\n⭐⭐⭐⭐⭐ 五星好评！');
+}
+
+// 大奖按钮
+function bigSurprise() {
+  const prizes = [
+    '🍳 golei至尊早餐体验券 x1（虚拟）',
+    '🥟 量子煎饼果子一份（意念版）',
+    '💎 钻石级豆浆一杯（已蒸发）',
+    '🏆 "早餐大王" 荣誉称号（自封）',
+    '💨 空气早餐无限次（永久有效）',
+  ];
+  const picked = prizes[Math.floor(Math.random() * prizes.length)];
+  alert('🎊 golei早餐店恭喜您！🎊\n\n'
+    + '您获得的大奖是：\n\n'
+    + picked + '\n\n'
+    + '🏅 另外附赠：\n'
+    + 'golei早餐店终身会员资格！\n'
+    + '会员号：GL-' + Math.random().toString(36).substr(2, 9).toUpperCase() + '\n\n'
+    + '请截图保存！向你的朋友炫耀！🍳');
+}
+
+// VIP 包间
+function vipRoom() {
+  alert('🍳 golei早餐店 · VIP 至尊包间 🍳\n\n'
+    + '您的 VIP 包间已预约成功！\n\n'
+    + '🏠 包间号：天字一号房\n'
+    + '👨‍🍳 专属厨师：Tony 大厨\n'
+    + '🌡️ 豆浆温度：42°C（精准控温）\n'
+    + '🧂 调料：82年拉菲勾兑\n'
+    + '⏱️ 时长：无限（直到你站起来）\n\n'
+    + '请携带胃口前往任意golei门店核销\n'
+    + '找不到门店？很正常，我们主要在线上做早餐 😂');
+}
+
+// 终极神秘大奖
+function ultimateReward() {
+  alert('🌟 golei早餐店 · 终极至尊大奖揭晓！🌟\n\n'
+    + '恭喜你成为golei早餐店第 ∞ 位尊贵客户！\n\n'
+    + '🏆 特等奖：golei早餐店终身名誉董事长（头衔）\n'
+    + '👑 一等奖：页面底部版权区有你的名字（没有）\n'
+    + '🍳 二等奖：免费早餐一万次（需自行脑补）\n'
+    + '💎 三等奖：本页面源代码一份（右键查看）\n'
+    + '🎁 参与奖：感谢你浪费了宝贵的 30 秒\n\n'
+    + '🤣 现在，把这个链接发给你的好朋友\n'
+    + '让TA也来golei早餐店享受至尊体验吧！\n\n'
+    + '————————————————————\n'
+    + 'golei早餐店 · 早餐改变世界 · 不吃不是地球人');
+}
+
+// 弹幕自动更新
+const danmaku = document.getElementById('danmaku');
+const danmakuMessages = [
+  '> 庄伟杰：golei早餐店 yyds！',
+  '> 胡培杰：已推荐给前女友',
+  '> 詹志恒：早餐我只认golei',
+  '> 杨灿豪：充值了 10 年会员',
+  '> 叶俊钦：带全公司来吃早餐',
+  '> 高悦：吃完之后我飘了',
+  '> 许淑慧：胃口重获新生',
+  '> 郑楚梅：比谈恋爱还爽',
+  '> 庄伟杰：golei上市我一定梭哈',
+];
+let danmakuIndex = 0;
+setInterval(() => {
+  danmaku.innerHTML += danmakuMessages[danmakuIndex % danmakuMessages.length] + '<br>';
+  danmakuIndex++;
+  if (danmaku.children.length > 25) danmaku.removeChild(danmaku.firstChild);
+}, 1800);
+
+// ===== 名字漂浮标签：满屏乱飞 =====
+const floatNames = [
+  { name: '庄伟杰', color: '#ff0000' },
+  { name: '胡培杰', color: '#ff8800' },
+  { name: '詹志恒', color: '#ffff00' },
+  { name: '杨灿豪', color: '#00ff00' },
+  { name: '叶俊钦', color: '#00ffff' },
+  { name: '高悦', color: '#ff00ff' },
+  { name: '许淑慧', color: '#ff0066' },
+  { name: '郑楚梅', color: '#ff6600' },
+];
+function spawnNameFloat() {
+  const info = floatNames[Math.floor(Math.random() * floatNames.length)];
+  const el = document.createElement('div');
+  el.className = 'name-float';
+  el.textContent = '🏆 ' + info.name + ' 🏆';
+  el.style.color = info.color;
+  el.style.top = (5 + Math.random() * 85) + '%';
+  el.style.animationDuration = (4 + Math.random() * 8) + 's';
+  el.style.fontSize = (18 + Math.random() * 36) + 'px';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 12000);
+}
+setInterval(spawnNameFloat, 1500);
+spawnNameFloat();
+spawnNameFloat();
+spawnNameFloat();
+
+// ===== 悬浮按钮随机移动 =====
+const floatSickBtn = document.getElementById('floatSickBtn');
+function moveSickBtn() {
+  const maxX = window.innerWidth - floatSickBtn.offsetWidth - 20;
+  const maxY = window.innerHeight - floatSickBtn.offsetHeight - 20;
+  const newX = Math.max(10, Math.random() * maxX);
+  const newY = Math.max(10, Math.random() * maxY);
+  floatSickBtn.style.left = newX + 'px';
+  floatSickBtn.style.top = newY + 'px';
+}
+// 初始位置
+floatSickBtn.style.left = '60%';
+floatSickBtn.style.top = '70%';
+setInterval(moveSickBtn, 1800);
+moveSickBtn();
+
+// ===== 爆炸警告 + 震动 =====
+let explosionInterval = null;
+let vibeInterval = null;
+
+function triggerExplosion() {
+  const overlay = document.getElementById('explosionOverlay');
+  const countdownEl = document.getElementById('explosionCountdown');
+  const vibeMsg = document.getElementById('explosionVibeMsg');
+
+  // 先隐藏浮动按钮
+  floatSickBtn.style.display = 'none';
+
+  // 显示爆炸遮罩
+  overlay.classList.add('active');
+  let seconds = 10;
+  countdownEl.textContent = seconds;
+
+  // 倒计时
+  explosionInterval = setInterval(() => {
+    seconds--;
+    countdownEl.textContent = seconds;
+
+    if (seconds <= 0) {
+      clearInterval(explosionInterval);
+      explosionInterval = null;
+
+      // 隐藏倒计时数字，显示最终爆炸
+      countdownEl.style.display = 'none';
+      document.querySelector('.explosion-icon').textContent = '💥💥💥';
+      document.querySelector('.explosion-title').textContent = '☠️ BOOM! 炸了! ☠️';
+      document.querySelector('.explosion-subtitle').style.display = 'none';
+
+      // 显示震动提示文本
+      vibeMsg.style.display = 'block';
+
+      // 启动手机震动（不可停止，除非关闭网页）
+      startUnstoppableVibration();
+    }
+  }, 1000);
+}
+
+function startUnstoppableVibration() {
+  // 检查是否支持震动
+  if (!navigator.vibrate) {
+    // 桌面端模拟：疯狂弹 alert
+    const fakeVibe = setInterval(() => {
+      // 桌面端用循环弹窗模拟不可关闭的震动
+    }, 100);
+    // 弹一个无法忽略的大 alert
+    setTimeout(() => {
+      alert('📳 乖 放肚子上 我来按摩了 📳\n\n（桌面端不支持震动，请用手机打开体验真实效果）\n\n💥 你的早餐已经爆炸！💥');
+    }, 200);
+    return;
+  }
+
+  // 移动端：持续震动，无法停止
+  function vibeLoop() {
+    // 使用最长持续时间，循环触发
+    navigator.vibrate([500, 100, 500, 100, 500, 100, 1000, 50, 200, 50, 200, 50, 1000]);
+  }
+  vibeLoop();
+  // 每隔很短时间重新触发，阻止震动停止
+  vibeInterval = setInterval(vibeLoop, 2800);
+}
+
+// 页面关闭/离开时清除震动（用户退出网页）
+window.addEventListener('beforeunload', () => {
+  if (vibeInterval) {
+    clearInterval(vibeInterval);
+  }
+  if (navigator.vibrate) {
+    navigator.vibrate(0);
+  }
+});
+
+// 页面不可见时也保持震动（防止切后台自动停）
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && vibeInterval) {
+    // 页面被隐藏时重新触发震动
+    if (navigator.vibrate) {
+      navigator.vibrate([500, 100, 500, 100, 500, 100, 1000]);
+    }
+  }
+});
+</script>
+
+</body>
+</html>
